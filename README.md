@@ -1,5 +1,5 @@
 # IT Incident Auto-Triage & Tracker
-### Mini Project 3 — .NET + Python Freshers Batch
+### Mini Project 3 — DOTNET FSD WITH PYTHON
 
 A Python CLI tool that automatically classifies IT incidents by type and severity using regex,
 creates tickets on ServiceNow, Jira, and Azure Boards (mock or live), and generates a styled
