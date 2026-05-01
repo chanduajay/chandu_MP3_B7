@@ -1,0 +1,98 @@
+[
+  {
+    "id": "INC001",
+    "title": "Database connection timeout on prod-db01",
+    "description": "Production database prod-db01 is down causing a full production outage. All downstream services affected. TCP connections timing out on port 5432.",
+    "reported_by": "ops-monitor@company.com",
+    "timestamp": "2026-04-27T08:00:00Z",
+    "assigned_team": "backend"
+  },
+  {
+    "id": "INC002",
+    "title": "Suspicious login attempts from unknown IP",
+    "description": "Multiple unauthorized login attempts from unknown IP 185.220.101.7. Brute-force pattern detected — over 500 attempts in 10 minutes. Account lockout triggered. Timeout on auth service.",
+    "reported_by": "security-monitor@company.com",
+    "timestamp": "2026-04-27T08:15:00Z",
+    "assigned_team": "security"
+  },
+  {
+    "id": "INC003",
+    "title": "Checkout service returning NullPointerException",
+    "description": "The checkout microservice throws NullPointerException on every request. HTTP-500 on /api/checkout. Stack trace: at com.shop.CheckoutService.process line 142. Error code CHK-500. Timeout on response. Service failing.",
+    "reported_by": "app-monitor@company.com",
+    "timestamp": "2026-04-27T08:30:00Z",
+    "assigned_team": "backend"
+  },
+  {
+    "id": "INC004",
+    "title": "Network switch offline in DC rack B",
+    "description": "Core network switch SW-RACK-B at 192.168.10.1 is completely down. VLAN 20 and VLAN 30 are unreachable. TCP/UDP traffic halted. All rack B hosts offline. Full outage in production zone.",
+    "reported_by": "noc@company.com",
+    "timestamp": "2026-04-27T08:45:00Z",
+    "assigned_team": "infra"
+  },
+  {
+    "id": "INC005",
+    "title": "Ransomware signature detected on workstation",
+    "description": "Ransomware malware detected on WS-FINANCE-04 at 10.5.0.44. Attempting to encrypt files on the production shared drive. Machine isolated from network. Breach of data integrity imminent.",
+    "reported_by": "edr-tool@company.com",
+    "timestamp": "2026-04-27T09:00:00Z",
+    "assigned_team": "security"
+  },
+  {
+    "id": "INC006",
+    "title": "Payment gateway timeout — Stripe API 503",
+    "description": "Payment gateway returning HTTP-503 from Stripe. Timeout after 30 seconds on POST /v1/charges. All payment transactions failing in production. Error code PAY-503. Service unavailable.",
+    "reported_by": "payments-monitor@company.com",
+    "timestamp": "2026-04-27T09:15:00Z",
+    "assigned_team": "backend"
+  },
+  {
+    "id": "INC007",
+    "title": "Intermittent packet loss on VLAN 30",
+    "description": "Users on VLAN 30 subnet 192.168.30.0/24 reporting intermittent packet loss. Approximately 15% packet drop measured via ICMP ping. Network is slow and degraded during peak hours. UDP traffic most affected.",
+    "reported_by": "noc@company.com",
+    "timestamp": "2026-04-27T09:30:00Z",
+    "assigned_team": "infra"
+  },
+  {
+    "id": "INC008",
+    "title": "Phishing email reported by 3 employees",
+    "description": "Three employees received phishing email impersonating IT department. Contains malicious link to spoofed login page. Threat type: phishing. Email gateway warning issued. Intermittent spread detected.",
+    "reported_by": "helpdesk@company.com",
+    "timestamp": "2026-04-27T09:45:00Z",
+    "assigned_team": "security"
+  },
+  {
+    "id": "INC009",
+    "title": "API response slow — P95 latency 4.2s",
+    "description": "Product search API /api/search showing slow response times. P95 latency at 4.2 seconds against 500ms SLA. Service degraded under load. Intermittent timeouts observed on endpoint.",
+    "reported_by": "apm-tool@company.com",
+    "timestamp": "2026-04-27T10:00:00Z",
+    "assigned_team": "backend"
+  },
+  {
+    "id": "INC010",
+    "title": "Scheduled job failed — non-production env",
+    "description": "Nightly data-sync scheduled job failed in staging. Job ID DATA-SYNC-NIGHTLY. Error code EXIT-1. Failed to connect to staging database. The job is failing consistently. Non-production only, no customer impact.",
+    "reported_by": "scheduler@company.com",
+    "timestamp": "2026-04-27T10:15:00Z",
+    "assigned_team": "backend"
+  },
+  {
+    "id": "INC011",
+    "title": "Minor firewall rule misconfiguration found",
+    "description": "Routine audit found misconfiguration in firewall ACL FW-RULE-047. Permits TCP port 8080 from non-authorised subnet. Low risk — no active exploitation. Remediation scheduled for maintenance window.",
+    "reported_by": "security-audit@company.com",
+    "timestamp": "2026-04-27T10:30:00Z",
+    "assigned_team": "security"
+  },
+  {
+    "id": "INC012",
+    "title": "DNS resolution intermittent on 10.2.0.0/16",
+    "description": "Users on 10.2.0.0/16 subnet reporting intermittent DNS resolution failures. UDP port 53 queries dropped at resolver 10.2.0.1. ICMP echo succeeds. Approximately 1 in 20 queries fails. Timeout on DNS responses.",
+    "reported_by": "noc@company.com",
+    "timestamp": "2026-04-27T10:45:00Z",
+    "assigned_team": "infra"
+  }
+]

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>IT Incident Auto-Triage Report</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f7fafc;
+    color: #2d3748;
+    font-size: 14px;
+  }
+
+  /* ── Header ── */
+  header {
+    background: #1a202c;
+    color: #fff;
+    padding: 16px 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  header h1 { font-size: 1.1rem; font-weight: 700; }
+  header .sub { font-size: .78rem; color: #a0aec0; margin-top: 2px; }
+
+  /* ── Page body ── */
+  .page { max-width: 1400px; margin: 0 auto; padding: 28px 32px; }
+
+  /* ── Section label ── */
+  .section-lbl {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #718096;
+    margin-bottom: 10px;
+    margin-top: 24px;
+  }
+
+  /* ── Summary cards ── */
+  .cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 18px 28px;
+    min-width: 120px;
+    text-align: center;
+  }
+  .card .num  { font-size: 2rem; font-weight: 800; color: #4299e1; line-height:1; }
+  .card .lbl  { font-size: .72rem; color: #718096; margin-top: 6px; }
+
+  /* ── Breakdown badges ── */
+  .breakdown-badge {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 20px;
+    font-size: .73rem;
+    font-weight: 600;
+    margin: 3px 4px 3px 0;
+  }
+
+  /* ── Incident table ── */
+  .table-wrap {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+  th {
+    padding: 11px 14px;
+    text-align: left;
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: middle;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #f7fafc; }
+
+  .col-id    { font-weight: 700; color: #4a5568; font-size:.78rem; white-space:nowrap; }
+  .col-title { min-width: 240px; }
+  .col-type,
+  .col-team  { color: #718096; white-space:nowrap; }
+  .col-ts    { color: #a0aec0; font-size:.75rem; white-space:nowrap; }
+
+  /* ── Severity pill ── */
+  .sev-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .6px;
+    white-space: nowrap;
+  }
+
+  /* ── Ticket chips ── */
+  .col-tickets { white-space: nowrap; }
+  .chip {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: .65rem;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+  .chip-snow  { background:#ebf8ff; color:#2b6cb0; }
+  .chip-jira  { background:#e9d8fd; color:#6b46c1; }
+  .chip-azure { background:#e6fffa; color:#234e52; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    font-size: .72rem;
+    color: #a0aec0;
+    padding: 28px 0 16px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>IT Incident Auto-Triage Report</h1>
+    <div class="sub">Generated: 2026-05-01 06:44:03 &nbsp;|&nbsp; Total incidents: 12</div>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="section-lbl">Summary</div>
+  <div class="cards">
+        <div class="card"><div class="num">12</div><div class="lbl">Total incidents</div></div>
+        <div class="card"><div class="num" style="color:#e53e3e">5</div><div class="lbl">Critical</div></div>
+        <div class="card"><div class="num" style="color:#ed8936">3</div><div class="lbl">High</div></div>
+        <div class="card"><div class="num" style="color:#4299e1">3</div><div class="lbl">Security threats</div></div>
+        </div>
+
+  <div class="section-lbl">Breakdown by Type</div>
+  <div><span class="breakdown-badge" style="background:#bee3f8;color:#2b6cb0">network: 7</span><span class="breakdown-badge" style="background:#fed7d7;color:#c53030">security: 3</span><span class="breakdown-badge" style="background:#e9d8fd;color:#6b46c1">app: 2</span></div>
+
+  <div class="section-lbl">Breakdown by Severity</div>
+  <div><span class="breakdown-badge" style="background:#fed7d7;color:#c53030">critical: 5</span><span class="breakdown-badge" style="background:#feebc8;color:#c05621">high: 3</span><span class="breakdown-badge" style="background:#fefcbf;color:#b7791f">medium: 3</span><span class="breakdown-badge" style="background:#c6f6d5;color:#276749">low: 1</span></div>
+
+  <div class="section-lbl">Breakdown by Team</div>
+  <div><span class="breakdown-badge" style="background:#bee3f8;color:#2b6cb0">backend: 5</span><span class="breakdown-badge" style="background:#c6f6d5;color:#276749">security: 4</span><span class="breakdown-badge" style="background:#e9d8fd;color:#6b46c1">infra: 3</span></div>
+
+  <div class="section-lbl">Incident Detail</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Severity</th>
+          <th>Type</th>
+          <th>Team</th>
+          <th>Timestamp</th>
+          <th>Tickets</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr>
+              <td class="col-id">INC001</td>
+              <td class="col-title">Database connection timeout on prod-db01</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#e53e3e">
+                  CRITICAL
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">backend</td>
+              <td class="col-ts">2026-04-27 08:00:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC001</span>
+                <span class="chip chip-jira">JIRA: PROJ-001</span>
+                <span class="chip chip-azure">AZURE: AZURE-001</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC004</td>
+              <td class="col-title">Network switch offline in DC rack B</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#e53e3e">
+                  CRITICAL
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">infra</td>
+              <td class="col-ts">2026-04-27 08:45:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC004</span>
+                <span class="chip chip-jira">JIRA: PROJ-004</span>
+                <span class="chip chip-azure">AZURE: AZURE-004</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC005</td>
+              <td class="col-title">Ransomware signature detected on workstation</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#e53e3e">
+                  CRITICAL
+                </span>
+              </td>
+              <td class="col-type">security</td>
+              <td class="col-team">security</td>
+              <td class="col-ts">2026-04-27 09:00:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC005</span>
+                <span class="chip chip-jira">JIRA: PROJ-005</span>
+                <span class="chip chip-azure">AZURE: AZURE-005</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC006</td>
+              <td class="col-title">Payment gateway timeout — Stripe API 503</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#e53e3e">
+                  CRITICAL
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">backend</td>
+              <td class="col-ts">2026-04-27 09:15:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC006</span>
+                <span class="chip chip-jira">JIRA: PROJ-006</span>
+                <span class="chip chip-azure">AZURE: AZURE-006</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC010</td>
+              <td class="col-title">Scheduled job failed — non-production env</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#e53e3e">
+                  CRITICAL
+                </span>
+              </td>
+              <td class="col-type">app</td>
+              <td class="col-team">backend</td>
+              <td class="col-ts">2026-04-27 10:15:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC010</span>
+                <span class="chip chip-jira">JIRA: PROJ-010</span>
+                <span class="chip chip-azure">AZURE: AZURE-010</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC002</td>
+              <td class="col-title">Suspicious login attempts from unknown IP</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#ed8936">
+                  HIGH
+                </span>
+              </td>
+              <td class="col-type">security</td>
+              <td class="col-team">security</td>
+              <td class="col-ts">2026-04-27 08:15:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC002</span>
+                <span class="chip chip-jira">JIRA: PROJ-002</span>
+                <span class="chip chip-azure">AZURE: AZURE-002</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC003</td>
+              <td class="col-title">Checkout service returning NullPointerException</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#ed8936">
+                  HIGH
+                </span>
+              </td>
+              <td class="col-type">app</td>
+              <td class="col-team">backend</td>
+              <td class="col-ts">2026-04-27 08:30:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC003</span>
+                <span class="chip chip-jira">JIRA: PROJ-003</span>
+                <span class="chip chip-azure">AZURE: AZURE-003</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC012</td>
+              <td class="col-title">DNS resolution intermittent on 10.2.0.0/16</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#ed8936">
+                  HIGH
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">infra</td>
+              <td class="col-ts">2026-04-27 10:45:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC012</span>
+                <span class="chip chip-jira">JIRA: PROJ-012</span>
+                <span class="chip chip-azure">AZURE: AZURE-012</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC007</td>
+              <td class="col-title">Intermittent packet loss on VLAN 30</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#ecc94b">
+                  MEDIUM
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">infra</td>
+              <td class="col-ts">2026-04-27 09:30:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC007</span>
+                <span class="chip chip-jira">JIRA: PROJ-007</span>
+                <span class="chip chip-azure">AZURE: AZURE-007</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC008</td>
+              <td class="col-title">Phishing email reported by 3 employees</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#ecc94b">
+                  MEDIUM
+                </span>
+              </td>
+              <td class="col-type">security</td>
+              <td class="col-team">security</td>
+              <td class="col-ts">2026-04-27 09:45:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC008</span>
+                <span class="chip chip-jira">JIRA: PROJ-008</span>
+                <span class="chip chip-azure">AZURE: AZURE-008</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC009</td>
+              <td class="col-title">API response slow — P95 latency 4.2s</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#ecc94b">
+                  MEDIUM
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">backend</td>
+              <td class="col-ts">2026-04-27 10:00:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC009</span>
+                <span class="chip chip-jira">JIRA: PROJ-009</span>
+                <span class="chip chip-azure">AZURE: AZURE-009</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-id">INC011</td>
+              <td class="col-title">Minor firewall rule misconfiguration found</td>
+              <td class="col-sev">
+                <span class="sev-pill" style="background:#48bb78">
+                  LOW
+                </span>
+              </td>
+              <td class="col-type">network</td>
+              <td class="col-team">security</td>
+              <td class="col-ts">2026-04-27 10:30:00</td>
+              <td class="col-tickets">
+                <span class="chip chip-snow">SNOW: MOCK-SNOW-INC011</span>
+                <span class="chip chip-jira">JIRA: PROJ-011</span>
+                <span class="chip chip-azure">AZURE: AZURE-011</span>
+              </td>
+            </tr></tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>IT Incident Auto-Triage &amp; Tracker — Mini Project 3</footer>
+</body>
+</html>
