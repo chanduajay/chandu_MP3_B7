@@ -212,7 +212,7 @@ def main():
     push_tickets(filtered)
 
     # 5. Generate report AFTER all API calls complete (collect ticket IDs first)
-    reporter = ReportGenerator(all_incidents)   # report always covers all incidents
+    reporter = ReportGenerator(filtered)   # report always covers all incidents
     html_path = reporter.generate_html()
     json_path = reporter.export_json()
 
